@@ -6,13 +6,13 @@
     justify-content: flex-end;
 }
 
-.detection {
-    margin: 4em auto;
+.content {
+    margin: 3em auto;
     padding: 1em;
     position: relative;
 }
 
-.idTextRequest {
+.site-text {
     color: #333;
     font-size: 1.3rem;
     font-weight: 700;
