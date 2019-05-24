@@ -5,3 +5,27 @@
 .navbar-collapse {
     justify-content: flex-end;
 }
+
+.detection {
+    margin: 4em auto;
+    padding: 1em;
+    position: relative;
+}
+
+.idTextRequest {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.results-title {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+
