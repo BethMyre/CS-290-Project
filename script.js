@@ -13,31 +13,27 @@ function bindButtons(){
 
         req.addEventListener('load',function(){
             if(req.status >= 200 && req.status < 400){
-                document.getElementById("langsDetected").textContent = "Language(s) detected...";
 
+                //Reset list of languages before each new request
+                document.getElementById("langList").innerHTML = "";
+
+                document.getElementById("langsDetected").textContent = "Language(s) detected...";
                 var response = JSON.parse(req.responseText);
                 console.log(response);
                 var detectedLanguages = response.detectedLangs;
-                console.log(detectedLanguages);
-
-                var langToDisplay;
-                var nameOfLanguage;
-
+                var listItem;
+                var textNode;
+                var displayText;
                 for(let i = 0; i < detectedLanguages.length; i++){
-                    langToDisplay = document.createElement("li");
-                    document.getElementById("langList").appendChild(langToDisplay);
-                    nameOfLanguage = document.createTextNode(detectedLanguages[i].lang);
-                    langToDisplay.appendChild(nameOfLanguage);
+                    listItem = document.createElement("li");
+                    document.getElementById("langList").appendChild(listItem);
+                    displayText = detectedLanguages[i].lang;
+                    displayText += " (";
+                    displayText += (100*(detectedLanguages[i].confidence)).toFixed(2);
+                    displayText += "% confidence)";
+                    textNode = document.createTextNode(displayText);
+                    listItem.appendChild(textNode);
                 }
-
-
-
-
-                //document.getElementById('cityID').textContent = response.name;
-                //var fTemp = response.main.temp*9/5 - 459.67;
-                //fTemp = fTemp.toFixed(2);
-                //document.getElementById('tempID').textContent = fTemp;
-                //document.getElementById('humidityID').textContent = response.main.humidity;
             } else {
                 console.log("Error in network request: " + req.statusText);
             }});
